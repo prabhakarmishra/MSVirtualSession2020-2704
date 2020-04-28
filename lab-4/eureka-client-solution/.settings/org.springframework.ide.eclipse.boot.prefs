@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-spring.boot.launch.profile.history=sentence;noun;adjective;article;verb;subject;
+spring.boot.launch.profile.history=sentence;verb;article;adjective;noun;subject;

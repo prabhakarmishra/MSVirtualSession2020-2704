@@ -17,6 +17,11 @@ https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing
 https://martinfowler.com/bliki/BoundedContext.html
 https://en.wikipedia.org/wiki/CAP_theorem
 https://en.wikipedia.org/wiki/SOLID
+https://12factor.net/
+https://spring.io/cloud
+https://microservices.io/patterns/data/shared-database.html
+https://github.com/spring-cloud-samples/configserver
+https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
 
 
 Single-responsibility Principle
@@ -65,3 +70,5 @@ Battle-tested standards and enforced standards
 Make it easy to do the right thing
 The circuit breaker and production ready code
 Synchronous calls considered harmful
+
+Spring Cloud configserver then create microservice

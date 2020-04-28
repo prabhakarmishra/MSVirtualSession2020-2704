@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    bus:
+      enabled: true
+      destination: configXchangebus
+  rabbitmq:
+    host: rabbitmq-master
+    port: 5672
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: lab-7-sentence-server-solution-reactive
+Implementation-Version: 1
+Built-By: w2cluster99
+Implementation-Vendor-Id: org.test
+Build-Jdk: 1.8.0_161
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/lab-7-sentence-server-solution-reactive
+Created-By: Maven Integration for Eclipse
+Main-Class: demo.Application
+

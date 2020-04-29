@@ -3,7 +3,7 @@ spring:
     config:
       server:
         git:
-          #uri: C:\work\ksr\kolkata2020labsconfig
+          #uri: C:\work\ksr\banglore2020labsconfig
           uri: https://github.com/prabhakarmishra/MSVirtualSession.git
           searchPaths: ConfigData
           skipSslValidation: true

@@ -1,0 +1,60 @@
+server:
+  port: 8081
+spring:  
+  sleuth:
+    trace-id128: true
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://zipkin:9411/
+  h2:
+    console:
+      enabled: ${productms.h2.console.enabled:true}
+      path: /h2
+      settings:
+        web-allow-others: true
+  datasource:
+    url: ${productms.datasource.url}
+    username: ${productms.datasource.username}
+    password: ${productms.datasource.password}
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        ddl-auto: create-drop
+  profiles:
+    active: dev 
+  rabbitmq:
+    host: rabbitmq-master
+    port: 5672
+  cloud:
+    bus:
+      enabled: true
+      destination: configXchangebus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${random.int}
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+    preferIpAddress: true
+    metadata-map:
+      zone: A
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    prefer-same-zone-eureka: true
+    serviceUrl:
+      defaultZone: ${productms.eureka.url:http://localhost:8761/eureka}
+
+feign:
+  hystrix:
+    enabled: true   
+        

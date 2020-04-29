@@ -1,0 +1,41 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: eureka
+    version: v1
+  name: eureka
+spec: 
+  strategy: # Default, so usually not specified
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1  # specifies the maximum number of Pods that can be created over the desired number of Pods
+      maxUnavailable: 25% #specifies the maximum number of Pods that can be unavailable during the update process
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: eureka
+      version: v1
+  template: 
+    metadata: 
+      labels: 
+        app: eureka
+        version: v1
+
+    spec: 
+
+      containers: 
+        - 
+          image: "prabhakarm/eurekavirtualsession:1"
+          imagePullPolicy: Always
+          name: eureka
+          ports: 
+#          - containerPort: 8081   
+          - name: httpport
+            containerPort: 8761
+            hostPort: 8761      
+  
+
+              
+                    

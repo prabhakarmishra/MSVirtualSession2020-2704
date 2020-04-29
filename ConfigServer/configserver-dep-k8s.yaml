@@ -1,0 +1,41 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: configserver
+    version: v1
+  name: configserver
+spec: 
+  strategy: # Default, so usually not specified
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1  # specifies the maximum number of Pods that can be created over the desired number of Pods
+      maxUnavailable: 25% #specifies the maximum number of Pods that can be unavailable during the update process
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: configserver
+      version: v1
+  template: 
+    metadata: 
+      labels: 
+        app: configserver
+        version: v1
+
+    spec: 
+
+      containers: 
+        - 
+          image: "prabhakarm/configservervirtual:1"
+          imagePullPolicy: Always
+          name: configserver
+          ports: 
+#          - containerPort: 8081   
+          - name: httpport
+            containerPort: 8888
+            hostPort: 8888      
+  
+
+              
+                    

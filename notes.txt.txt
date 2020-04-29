@@ -26,6 +26,10 @@ https://microservices.io/patterns/server-side-discovery.html
 https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide
 https://github.com/spring-projects
 https://www.youtube.com/watch?v=_I94-tJlovg
+https://spring.io/projects/spring-amqp#overview
+https://www.infoq.com/news/2018/06/observability-microservices/
+https://microservices.io/patterns/reliability/circuit-breaker.html
+https://spring.io/projects/spring-cloud-circuitbreaker
 
 
 
@@ -77,6 +81,11 @@ The circuit breaker and production ready code
 Synchronous calls considered harmful
 
 Spring Cloud configserver then create microservice
+
+
+Spring Cloud Bus - AMQP
+- Queue based 
+	Pub / Sub
 
 Spring Secuirty 
 	- Outh2.0

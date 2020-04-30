@@ -117,6 +117,27 @@ docker logs bfad35683312 -f
 
 Image is build on a layered file system (union file system)
 
++++++++++++++++++++++++++++++++++++++++++++= LAB +++++++++++++++++++++++++++++++
+docker build -t prabhakarm/configserver30april2020:1 .
+
+docker run -p 8888:8888 -d --name config30April --network ms-chassis-nw prabhakarm/configserver30april2020:1
+
+docker build -t prabhakarm/eureka30april:1 .
+
+docker run -p 8761:8761 -d --name eureka30April --network ms-chassis-nw prabhakarm/eureka30april:1
+
+docker build -t prabhakarm/cloudapigateway30april:1 .
+
+docker run -p 80:9092 -d --name cloudapigateway30April --network ms-chassis-nw prabhakarm/cloudapigateway30april:1
+
+docker build -t prabhakarm/productms30april:1 .
+
+docker run -d --name productms30April --network ms-chassis-nw prabhakarm/productms30april:1 .
+
+docker build -t prabhakarm/discountms30april:1 .
+
+docker run -d --name discountms30April --network ms-chassis-nw prabhakarm/discountms30april:1
+
 
 docker network ls
 docker network create <name>

@@ -30,6 +30,8 @@ https://spring.io/projects/spring-amqp#overview
 https://www.infoq.com/news/2018/06/observability-microservices/
 https://microservices.io/patterns/reliability/circuit-breaker.html
 https://spring.io/projects/spring-cloud-circuitbreaker
+https://howtodoinjava.com/spring-cloud/spring-cloud-zipkin-sleuth-tutorial/
+https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin
 
 
 
@@ -89,12 +91,149 @@ Spring Cloud Bus - AMQP
 
 Spring Secuirty 
 	- Outh2.0
+192.168.99.100 rabbitmq-master
+192.168.99.100 zipkin
+192.168.99.100 mysql
+192.168.99.100 eureka-1
+192.168.99.100 configserver
 
 ================================================= docker =================================
-docker-machine ls
+docker-machine create -d "virtualbox" docker-vm3
+docker images
+docker pull nginx:latest
+docker run -d nginx
+docker run -d -p 80:80 --name mynginx nginx
+docker container kill 5c13c97e9e23
 docker ps
-docker start docker-vm1
-docker-machine start docker-vm1
-docker-machine env docker-vm1
-@FOR /f "tokens=*" %i IN ('docker-machine env docker-vm1') DO @%i
-docker-machine ls
+docker container stop 1696a8e642f8 91ab8776b340
+docker ps -a
+docker container prune  // Remove all stopped containers.
+docker container rm e7e09d318ed9
+docker container kill e7e09d318ed9
+docker exe -it mynginx /etc/bin // run a command in container, in this case would present a shell.
+docker inspect <container>
+
+docker logs bfad35683312 -f
+
+Image is build on a layered file system (union file system)
+
+
+docker network ls
+docker network create <name>
+docker inspect <networkname>
+
+
+docker push  prabhakarm/cloudapigatewaykol:1
+
+
+docker.io/prabhakarm/cloudapigatewaykol:1
+{docker registry}/{subjectname}/imagename:<imagetag>
+
+docker tag prabhakarm/cloudapigatewaykol:1 prabhakarm/cloudapigatewaykol:latest
+
+docker login
+
+
+=======K8S======================
+https://landscape.cncf.io/
+minikube ( dev )
+minishift ( OpenShift 1 worker and 1 master)
+https://kubernetes.io/docs/home/
+https://www.katacoda.com/
+
+kubectl create ns demo
+kubectl run nginx --image=nginx --replicas=5 -n demo
+kubectl get pods -n demo
+
+kubectl get events -n demo
+
+kubectl get events -n demo
+kubectl get events -n demo -w
+
+kubectl get deployment -n demo
+kubectl scale deployment nginx --replicas=1 -n demo
+
+kubectl version
+kubectl version --short
+
+kubectl config view
+
+kubectl config get-contexts
+kubectl config get-clusters
+
+t all nodes on Virtual VM
+Login to all nodes and execute the following....
+sudo swapoff -a
+
+On Master
+1. sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+2. cat /home/master/.kube/config
+3. kubectl get nodes
+if still getting the issue then below command
+    sudo -i
+    swapoff -a
+    exit
+    strace -eopenat kubectl version
+	
+	
+kubectl get secrets
+
+kubectl describe secret <default token>
+
+4. 
+	kubectl apply -f admin-user.yaml
+	kubectl describe sa admin-user -n kube-system
+	kubectl describe secret admin-user-token-rcvmb -n kube-system
+	
+
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImtmR2tZZ00wZlFJaEFHX1Fya19Zb1l1NzRLUGpjWW04QXFKaTZhV2VQaUUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXJjdm1iIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI0NTBhNzZkZC0wZWYyLTQ0NGMtOGY0ZC0wYWNjNWZjZGQwMTkiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.tubX4i2ppEeeP2RPk0fMWRtbljadBHzlL3EA2GYxTxiCHzjbzARE-kKu0_CgzCoi6nAGzz-5f0whUSL0g8rkWuMuxqEmXYGq8sYeGdRVbakFKJXyv4qV5Jpx0s7uqmfEhfKu7tgpsco646e3-pC5zLt0lsdXlDXcWlCtBbDXKGsltkVRLjCwH3Cg-iUPRljLkamOtc7K9Z-pPtaVFHAG6hFmawFZ7id4HrQ24LyQDBd_CNeMZWUWSk1P07-hK4npf08ExH8Il6PGNyHrBPw0ZZYqFb1cZ1jz14cxtqj6syXMlrQT9vRg1IEl236LjiZEIPhMzxU5l8l-96y9Ps4e_Q
+
+
+5. Copy the token.
+
+On Windows Hosts
+kubectl config set-cluster <cluster-name> --insecure-skip-tls-verify=true --server=https://<master-ip>:6443
+kubectl config set-credentials <crednam> --token=<copied token from master>
+kubectl config set-context <context-name> --cluster=<cluster-name> --user=<crednam> 
+kubectl config use-context <context-name>
+
+kubectl get nodes
+
+https://cdn2.hubspot.net/hubfs/1665891/Assets/Kubernetes%20Security%20-%20Operating%20Kubernetes%20Clusters%20and%20Applications%20Safely.pdf?t=1538587424944&_hsenc=p2ANqtz-_7jbqtRATdJAm7eFxtd5u4nVLYuIlrF67z5qbslZ10-I63-RZ4ogqu9iuuEMsx7fskPYWww2jDpVjOvrLs
+
+============== Run the Case Study =============================
+Go to mschassis/k8s/rabbitmq
+
+kubectl apply -f rabbitmq-dep-w-k8s.yaml
+kubectl apply -f rabbitmq-dep-k8s.yaml
+kubectl apply -f rabbitmq-svc-k8s.yaml
+
+
+Go to mschassis/zipkin
+kubectl apply -f zipkin-dep-k8s.yaml
+kubectl apply -f zipkin-svc-k8s.yaml
+
+kubectl apply -f configserver-dep-k8s.yaml
+kubectl apply -f configserver-svc-k8s.yaml
+... once config server runs ...
+kubectl apply -f eureka-dep-k8s.yaml
+kubectl apply -f eureka-svc-k8s.yaml
+
+kubectl apply -f cloudapigateway-dep-k8s.yaml
+kubectl apply -f cloudapigateway-svc-k8s.yaml
+
+kubectl apply -f discountms-dep-k8s.yaml
+
+kubectl apply -f productms-dep-k8s.yaml
+=======================
+
+https://micrometer.io/
+
+
+===================================
+
+ABC - Application- 
+
+(JDK, application code, LIB , any other software) - Image - SIT, UAT, PROD, Any enviorment 
+

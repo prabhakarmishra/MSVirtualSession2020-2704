@@ -74,6 +74,14 @@ public class ProductmsApplication {
 		p.getTags().add(new ProductTag(3, "plastic"));
 		productSeeds.put(3, p);
 		prepo.save(p);
+		p = new Product(4, "Space Craft Lego", "580 pieces", ProductCategory.TOY, 776.00);
+		p.getTags().add(new ProductTag(4, "plastic"));
+		productSeeds.put(4, p);
+		prepo.save(p);
+		p = new Product(5, "Space Craft Lego", "580 pieces", ProductCategory.TOY, 776.00);
+		p.getTags().add(new ProductTag(5, "plastic"));
+		productSeeds.put(5, p);
+		prepo.save(p);
 
 		/*
 		 * ptrepo.save(new ProductTag(3, "plastic")); ptrepo.save(new ProductTag(3,

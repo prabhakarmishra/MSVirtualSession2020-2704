@@ -6,7 +6,7 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://zipkin:9411/
+    base-url: http://192.168.99.100:9411/
   h2:
     console:
       enabled: ${productms.h2.console.enabled:true}
@@ -27,7 +27,7 @@ spring:
   profiles:
     active: dev 
   rabbitmq:
-    host: rabbitmq-master
+    host: 192.168.99.100
     port: 5672
   cloud:
     bus:
@@ -52,7 +52,7 @@ eureka:
     fetchRegistry: true
     prefer-same-zone-eureka: true
     serviceUrl:
-      defaultZone: ${productms.eureka.url:http://localhost:8761/eureka}
+      defaultZone: ${productms.eureka.url:http://192.168.99.100:8761/eureka}
 
 feign:
   hystrix:

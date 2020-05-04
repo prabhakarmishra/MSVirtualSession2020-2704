@@ -38,7 +38,13 @@ https://microservices.io/patterns/reliability/circuit-breaker.html
 https://spring.io/projects/spring-cloud-circuitbreaker
 https://howtodoinjava.com/spring-cloud/spring-cloud-zipkin-sleuth-tutorial/
 https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin
+https://jwt.io/introduction/
+https://jwt.io/
+https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java
+https://dzone.com/articles/blue-green-deployment-for-cloud-native-application
 
+https://www.youtube.com/watch?v=zf6ogW0HKLY
+https://www.youtube.com/watch?v=ndLbn24OwQg
 
 
 Single-responsibility Principle
@@ -159,6 +165,16 @@ docker.io/prabhakarm/cloudapigatewaykol:1
 docker tag prabhakarm/cloudapigatewaykol:1 prabhakarm/cloudapigatewaykol:latest
 
 docker login
+==========================================================
+Cloud
+ABC Application - Datacenter - 5 nodes 
+
+8 AM-11 AM - 5 M Hit - 80% - 10 PODS  - 1+1+1+1+1+1+1+1+1+1
+11 AM - 2 PM - 2 M Hit - 50%-45% - 7 PODS - 1+1+1+1+1+1+1
+2 PM to 5 PM - 3 M hit - 50-60%  - 8 POD  - 1+1+1+1+1+1+1
+5 PM - 7 PM - 2 M hit - 50%-45%  - 6-7 POD
+7 PM to 10 PM - 3 M hit 50-60%  - 8 POD   - 
+10 PM to 7: 50 AM - 1/2 M hit - 10-20% - 2 POD - 1 Min - 75% + 1 min utilazation - 40% 
 
 
 =======K8S======================

@@ -280,3 +280,64 @@ ABC - Application-
 
 (JDK, application code, LIB , any other software) - Image - SIT, UAT, PROD, Any enviorment 
 
+==========================================================================
+                   GKE Steps
+				   
+1. Create the kubernates cluster with 3 nodes
+2. spring boot application
+https://github.com/prabhakarmishra/spring-boot-lazy-init-example
+
+endpoing would be : http://localhost:8080/lazy
+https://www.youtube.com/watch?v=jSYxW_c3M_E
+
+3. git clone https://github.com/prabhakarmishra/spring-boot-lazy-init-example
+cd spring-boot-lazy-init-example
+ls -ltr
+4. ./mvnw clean install
+ cd target
+java -jar spring-boot-lazy -- snapshot.jar
+(snapshot was created after build and install)
+5. go to webpreview and see the application working or not
+ /lazy check the application working or not
+6. lets create the images and store in google registry
+7. it will run from init-exmaple directory
+command is below
+- gcloud projects list - change the below command projectid based on define your project
+ ./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/spring-boot-exmaple:v1
+
+once image created it will story in google registry with version
+
+8. lets login in google cluster with giving the credentials with zone details
+
+gcloud config set project projectid- [dark-sensor-273013-projectid]
+gcloud container clusters get-credentials techprimers-clousetr-1 -- zone us-central1-a
+
+9. kubectl get pods
+ kubectl get services
+ kubectl get deployment 
+10. check the docker
+Copy the imagename from container registry
+11. docker run -ti --rm -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/spring-boot-example:v1
+12. kubectl run spring-boot-exmaple --image=gcr.io/$GOOGLE_CLOUD_PROJECT/spring-boot-example:v1 --port 8080
+13. check the deployment
+kubectl get deployment
+kubectl get pods
+kubectl get services
+14. expose the service via loadbalancer
+kubectl expose deployment spring-boot-example --type=LoadBalancer
+kubectl get services
+15. check the external ip and access the application via external IP
+16. it is in 1 pod as of now. lets scale the pods
+17. kubectl scale deployment spring-boot-example --replicas=3
+18. kubectl get pods
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,13 @@ Duration: 7 hr 41 min 21 sec
 Recording password: qTpj64kb
 https://ibm.webex.com/recordingservice/sites/ibm/recording/playback/545816f060824317a936298e0acd1456
 
+Monday, May 4, 2020  |  11:59 pm  |  Eastern Daylight Time (New York, GMT-04:00)  
+Duration: 5 hr 52 min 38 sec  
+Recording password: PdkJnCv9 
+https://ibm.webex.com/recordingservice/sites/ibm/recording/playback/7e442cac09eb4109aeadd8db17a3d38e
+
+
+
 GIT URL - April 27 to 4 May :
 
 https://github.com/prabhakarmishra/MSVirtualSession2020-2704.git
